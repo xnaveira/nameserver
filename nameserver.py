@@ -34,7 +34,7 @@ class NameServer:
         """
         Given an alias name and a name (A record) it creates the CNAME record
         """
-        rdataa = dns.rdata.from_text(dns.rdataclass.IN,dns.rdatatype.CNAME,name)
+        rdataa = dns.rdata.from_text(dns.rdataclass.IN,dns.rdatatype.CNAME,str(name))
         rdataseta = dns.rdataset.from_rdata(300,rdataa)
         self.update.add(alias_name,rdataseta)
         return dns.query.tcp(self.update,self.server_address)
